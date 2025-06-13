@@ -1,0 +1,12 @@
+/scrapers
+/scraped_db
+/dev
+
+__pycache__
+*.pyc
+.env
+langchainConnector.py
+python_neon_connect.py
+startupBlinScraper.csv
+startupBlinkScraper-1.csv
+test.py
