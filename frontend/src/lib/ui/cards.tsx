@@ -42,6 +42,8 @@ const StartupCard: React.FC<StartupCardProps> = ({
               <Image
                 src={logo}
                 alt={`${name} logo`}
+                width={48}
+                height={48}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -72,13 +74,13 @@ const StartupCard: React.FC<StartupCardProps> = ({
 
         {/* Description */}
         <div className="mb-4">
-          <p className="text-primary-foreground/20 text-sm leading-relaxed line-clamp-4">
+          <p className="text-primary-foreground/60 text-sm leading-relaxed line-clamp-4">
             {description}
           </p>
         </div>
 
         {/* Analysis */}
-        <div className="mb-4 p-3 bg-blue-50 rounded-lg border-l-4 border-secondary-foreground/30">
+        <div className="mb-4 p-3 bg-primary/10 rounded-lg border-l-4 border-secondary-foreground/30">
           <p className="text-primary-foreground text-sm font-medium mb-1">Analysis</p>
           <p className="text-primary-foreground/80 text-xs leading-relaxed">
             {analysis}

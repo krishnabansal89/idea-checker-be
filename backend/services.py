@@ -133,6 +133,7 @@ class Services:
                 "name": doc.metadata.get("name", "N/A"),
                 "description": doc.page_content
             })
+        self.logger.info(f"Formatted candidates: {json.dumps(formatted_candidates, indent=2)}")
 
         # Define the JSON schema for the model's output
         json_schema = {
@@ -203,7 +204,7 @@ class Services:
                     "type": "json_schema",
                     "json_schema": json_schema
                 },
-                max_completion_tokens=4096,
+                max_completion_tokens=8096,
                 reasoning_effort="medium"
             )
             
@@ -241,6 +242,8 @@ class Services:
         
         # Step 2: Query Cosmos DB for candidate documents
         candidate_docs = self.QueryCosmosDB(distilled_query)
+        self.logger.info(f"Found {len(candidate_docs)} candidate documents.")
+        self.logger.info(f"Candidate documents: {candidate_docs}")
         
         if not candidate_docs:
             self.logger.warning("No candidate documents found.")

@@ -3,7 +3,7 @@ from typing import List , Optional , Dict , Any
 
 class IdeaRequest(BaseModel):
     raw_request:str = Field(..., description="The raw request string containing the idea details.")
-    user_id: Optional[str] = Field(None, description="The ID of the user making the request.")
+    uuid: Optional[str] = Field(None, description="The ID of the user making the request.")
 
 class StartupResponse(BaseModel):
     startup_id: str

@@ -18,6 +18,7 @@ export async function createEntry(idea: string) {
             request: { idea },
             geoLocation: location,
         });
+        console.log("Idea submitted successfully:", idea, uuid);
         return { success: true, message: "Idea submitted successfully" , uuid: uuid };
 
     } catch (error) {

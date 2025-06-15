@@ -1,4 +1,3 @@
-import { request } from "http";
 import mongoose, { Mongoose } from "mongoose";
 
 declare global {
@@ -32,7 +31,7 @@ const startupSchema = new mongoose.Schema({
         timestamps: true,
     });
 
-const Startup = mongoose.models.Startup || mongoose.model("Startup", startupSchema);
+const Startup = mongoose.models.InputLogs || mongoose.model("InputLogs", startupSchema);
 
 export default Startup;
 
