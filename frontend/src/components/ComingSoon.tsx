@@ -46,7 +46,7 @@ export default function ComingSoon() {
                 Roadmap
             </Header>
             <h2 className="text-4xl font-inter font-bold text-primary-foreground mb-6 text-center">
-                What's Coming Next
+                What&apos;s Coming Next
             </h2>
             <span className="text-secondary-foreground text-center font-poppins mb-12 w-[80%]">
                 Discover the exciting features and improvements we have planned for the future of our platform.

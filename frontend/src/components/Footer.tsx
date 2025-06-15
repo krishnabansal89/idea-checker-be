@@ -18,7 +18,7 @@ export default function Footer() {
                             />
                         </div>
                         <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
-                            Turning your "what if" into "what's next." DoesMyIdeaExist is your go-to platform for discovering if your big idea already exists, with instant comparisons to over 10,000 startups.
+                            Turning your &quot;what if&quot; into &quot;what&apos;s next.&quot; DoesMyIdeaExist is your go-to platform for discovering if your big idea already exists, with instant comparisons to over 10,000 startups.
                         </p>
 
                         {/* Social Links */}

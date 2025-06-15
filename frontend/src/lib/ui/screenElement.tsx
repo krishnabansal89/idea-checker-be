@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { CircularProgressBar } from "./circularProgressBar";
 export default function ScreenElement({
-    url,
     Name,
     desc,
     score,

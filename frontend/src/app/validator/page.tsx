@@ -4,11 +4,14 @@ import { useState } from "react";
 import StartupCard from "@/lib/ui/cards";
 import { StartupCardProps } from "@/lib/ui/cards";
 import { createEntry } from "@/app/actions/checker";
+import LinearLoader from "@/lib/ui/progressBar";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
 export default function Page() {
   const [input, setInput] = useState("");
   const [results, setResults] = useState<StartupCardProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
     if (!input.trim()) {
@@ -24,6 +27,8 @@ export default function Page() {
       alert(response.error);
       return null;
     }
+    setLoading(true);
+    setError(null);
     const uuid = (response.uuid as string) || "";
     const matchResponse = await fetch(`${BACKEND_URL}/match`, {
       method: "POST",
@@ -35,10 +40,13 @@ export default function Page() {
 
     const matchData = await matchResponse.json();
     if (matchData.error) {
+        setLoading(false);
+        setError(matchData.error);
       alert(matchData.error);
       return null;
     }
 
+    setLoading(false);
     setResults(matchData.matches || []);
   };
   return (
@@ -72,10 +80,14 @@ export default function Page() {
           Search
         </button>
       </div>
+      <div className="mt-4 md:w-[60%] mx-auto w-[90%]">
+<LinearLoader isLoading={loading} onComplete={() => setLoading(false)} />
+</div>
       <p className="text-secondary-foreground/70 mt-4 font-poppins text-sm mx-auto w-[90%] text-center">
         Paste your idea and we will find the closest matches from our database
         of 500,000 startups.
       </p>
+
 
       {results && results.length > 0 ? (
         <div className="md:w-[80%] mt-8 w-[90%] grid-cols-1 grid md:grid-cols-3 gap-4">
@@ -83,7 +95,8 @@ export default function Page() {
             <StartupCard key={startup.startup_id} {...startup} />
           ))}
         </div>
-      ) : (
+      ):""}
+      {error &&  (
         <p className="text-secondary-foreground/70 mt-8 font-poppins text-sm">
           No results found.
         </p>
