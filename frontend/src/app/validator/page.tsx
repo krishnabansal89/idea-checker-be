@@ -6,7 +6,7 @@ import { StartupCardProps } from "@/lib/ui/cards";
 import { createEntry } from "@/app/actions/checker";
 import LinearLoader from "@/lib/ui/progressBar";
 
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL  || "http://localhost:8000";
 export default function Page() {
   const [input, setInput] = useState("");
   const [results, setResults] = useState<StartupCardProps[]>([]);
